@@ -99,3 +99,81 @@ footer {
   color: white;
   font-size: 0.9rem;
 }
+
+/* Pricing Section */
+#pricing {
+  padding: 40px;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+#pricing h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+#pricing p {
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+
+/* Pricing Cards Container */
+.pricing-container {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  flex-wrap: wrap; /* Ensures responsiveness */
+}
+
+/* Individual Pricing Card */
+.pricing-card {
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  width: 45%; /* Default width for larger screens */
+  min-width: 250px; /* Prevents cards from being too small */
+  margin-bottom: 20px;
+}
+
+.pricing-card h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.pricing-card .price {
+  font-size: 30px;
+  font-weight: bold;
+  color: #ffc439;
+  margin-bottom: 15px;
+}
+
+.pricing-card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.pricing-card ul li {
+  margin: 10px 0;
+}
+
+.pricing-card button {
+  background-color: #ffc439;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Responsive for Mobile (One plan per row) */
+@media (max-width: 768px) {
+  .pricing-container {
+    justify-content: center;
+  }
+
+  .pricing-card {
+    width: 90%; /* Make the cards take full width on smaller screens */
+  }
+}
