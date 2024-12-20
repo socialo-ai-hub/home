@@ -16,7 +16,7 @@ body {
 
 /* Header */
 header {
-  background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+  background: linear-gradient(90deg, #e3c35c 0%, #d9a342 100%);
   color: white;
   padding: 20px;
   text-align: center;
@@ -25,6 +25,11 @@ header {
 header h1 {
   font-size: 2.5rem;
   margin-bottom: 10px;
+}
+
+section h2 {
+  padding: 40px;
+  text-align: center;
 }
 
 header p {
@@ -64,7 +69,7 @@ main {
 
 main h2 {
   margin-bottom: 10px;
-  color: #2575fc;
+  color: #d9a342;
   border-bottom: 2px solid #f4f4f9;
   padding-bottom: 5px;
 }
@@ -103,26 +108,17 @@ footer {
 /* Pricing Section */
 #pricing {
   padding: 40px;
-  background-color: #f9f9f9;
-  text-align: center;
-}
-
-#pricing h2 {
-  font-size: 32px;
-  margin-bottom: 20px;
-}
-
-#pricing p {
-  font-size: 18px;
-  margin-bottom: 40px;
+  max-width: 1200px; /* Constrain the section width */
+  margin: 0 auto; /* Center the section */
 }
 
 /* Pricing Cards Container */
 .pricing-container {
   display: flex;
-  justify-content: space-around;
-  gap: 20px;
-  flex-wrap: wrap; /* Ensures responsiveness */
+  justify-content: space-between; /* Ensure even spacing between cards */
+  flex-wrap: wrap; /* Allow cards to wrap on smaller screens */
+  gap: 20px; /* Add spacing between cards */
+  box-sizing: border-box; /* Prevent overflow issues */
 }
 
 /* Individual Pricing Card */
@@ -132,16 +128,35 @@ footer {
   padding: 20px;
   border-radius: 8px;
   text-align: center;
-  width: 45%; /* Default width for larger screens */
-  min-width: 250px; /* Prevents cards from being too small */
-  margin-bottom: 20px;
+  flex: 1 1 calc(33.333% - 20px); /* Ensure three cards per row */
+  max-width: calc(
+    33.333% - 20px
+  ); /* Constrain card width to fit within the row */
+  box-sizing: border-box; /* Include padding/border in the card size */
+  display: flex;
+  flex-direction: column; /* Stack content vertically */
+  justify-content: space-between; /* Ensure proper alignment of the button */
+  height: 100%; /* Ensure cards have equal height */
+  position: relative; /* Allow for styled elements */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for elegance */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover effect */
 }
 
+/* Add hover effect to pricing cards */
+.pricing-card:hover {
+  transform: translateY(-5px); /* Subtle upward shift on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Slightly larger shadow */
+}
+
+/* Headings inside Pricing Cards */
 .pricing-card h3 {
   font-size: 24px;
-  margin-bottom: 10px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #333;
 }
 
+/* Price Text */
 .pricing-card .price {
   font-size: 30px;
   font-weight: bold;
@@ -149,31 +164,50 @@ footer {
   margin-bottom: 15px;
 }
 
+/* List inside Pricing Cards */
 .pricing-card ul {
   list-style: none;
   padding: 0;
+  margin: 0 0 20px; /* Add spacing before the button */
+  flex-grow: 1; /* Ensure lists take up available space */
 }
 
 .pricing-card ul li {
   margin: 10px 0;
+  font-size: 16px;
+  color: #666;
 }
 
+/* Buttons inside Pricing Cards */
 .pricing-card button {
-  background-color: #ffc439;
+  background-color: #d9a342;
+  color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 12px 20px;
   font-size: 16px;
   cursor: pointer;
   border-radius: 5px;
+  font-weight: bold;
+  margin-top: auto; /* Push the button to the bottom */
+  transition: background-color 0.2s ease; /* Smooth hover effect */
 }
 
-/* Responsive for Mobile (One plan per row) */
-@media (max-width: 768px) {
-  .pricing-container {
-    justify-content: center;
-  }
+.pricing-card button:hover {
+  background-color: #ffb400;
+}
 
+/* Responsive for Tablets (Two cards per row) */
+@media (max-width: 1024px) {
   .pricing-card {
-    width: 90%; /* Make the cards take full width on smaller screens */
+    flex: 1 1 calc(50% - 20px); /* Adjust to fit two cards per row */
+    max-width: calc(50% - 20px); /* Constrain width */
+  }
+}
+
+/* Responsive for Mobile (One card per row) */
+@media (max-width: 768px) {
+  .pricing-card {
+    flex: 1 1 100%; /* Full width */
+    max-width: 100%; /* Ensure cards take up the full width */
   }
 }
